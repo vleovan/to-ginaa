@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Valentine - For Gina ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500&family=Sacramento&display=swap');
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background: #0a0005; color: #fff;
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden; display: flex; justify-content: center; align-items: center;
+        }
+
+        /* Animasi Background Mewah */
+        .bg-gradient {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #3d001a 0%, #000 100%);
+            z-index: -1;
+        }
+
+        /* Sparkle & Hearts Particles */
+        .particle {
+            position: absolute; pointer-events: none; z-index: 1;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Overlay Pembuka */
+        #overlay {
+            position: fixed; z-index: 100; text-align: center; transition: 2s;
+        }
+        #overlay h1 { 
+            font-family: 'Sacramento', cursive; font-size: 4.5rem; 
+            color: #ff4d6d; margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+        }
+        .btn-play {
+            padding: 15px 45px; background: linear-gradient(45deg, #ff4d6d, #c9184a);
+            border: none; color: white; font-size: 1.2rem; border-radius: 50px;
+            cursor: pointer; transition: 0.4s; font-family: 'Quicksand', sans-serif;
+            font-weight: 500; box-shadow: 0 0 25px rgba(255, 77, 109, 0.5);
+        }
+        .btn-play:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(255, 77, 109, 0.8); }
+
+        /* Teks Narasi Berjalan */
+        #narration {
+            position: fixed; z-index: 50; display: none; text-align: center;
+            width: 80%; font-family: 'Dancing Script', cursive;
+            font-size: 2rem; color: #ffccd5; line-height: 1.5;
+        }
+
+        /* Container Foto Cinematic */
+        #stage { z-index: 10; display: none; text-align: center; width: 90%; max-width: 450px; }
+        .photo-box { display: none; animation: zoomAndFade 9s ease-in-out forwards; }
+        
+        @keyframes zoomAndFade {
+            0% { opacity: 0; transform: scale(0.8) rotate(-3deg); filter: blur(10px); }
+            20% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
+            80% { opacity: 1; transform: scale(1.05); filter: blur(0); }
+            100% { opacity: 0; transform: scale(1.1); filter: blur(10px); }
+        }
+
+        .img-frame {
+            width: 100%; border-radius: 25px; 
+            box-shadow: 0 0 40px rgba(255, 77, 109, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .caption {
+            font-family: 'Sacramento', cursive; font-size: 2.8rem;
+            color: #ffb1bf; margin-top: 25px; text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+        }
+
+        /* Kartu Pesan Terakhir */
+        #final-letter {
+            display: none; background: rgba(255, 255, 255, 0.05);
+            padding: 40px; border-radius: 30px; backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 77, 109, 0.3);
+            animation: cardPopup 3s ease-out forwards;
+            max-width: 500px;
+        }
+        @keyframes cardPopup { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+        .letter-content { font-size: 1.15rem; line-height: 1.9; color: #ffe4e8; text-align: left; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-gradient"></div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808f30304.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="overlay">
+        <h1>My Valentine...</h1>
+        <button class="btn-play" onclick="startExperience()">Open Your Heart ❤️</button>
+    </div>
+
+    <div id="narration"></div>
+
+    <div id="stage">
+        <div class="photo-box" id="p1">
+            <img src="LINK_FOTO_1_KAMU" class="img-frame">
+            <div class="caption">"If there were no words..."</div>
+        </div>
+        <div class="photo-box" id="p2">
+            <img src="LINK_FOTO_2_KAMU" class="img-frame">
+            <div class="caption">"No way to speak..."</div>
+        </div>
+        <div class="photo-box" id="p3">
+            <img src="LINK_FOTO_3_KAMU" class="img-frame">
+            <div class="caption">"I would still hear you."</div>
+        </div>
+
+        <div id="final-letter">
+            <h2 style="font-family: 'Sacramento', cursive; font-size: 3.5rem; color: #ff4d6d; text-align: center; margin-top: 0;">Gina, My Valentine</h2>
+            <div class="letter-content">
+                "Aku tahu semuanya nggak mudah buat kamu. Ada ketakutan dan tekanan yang kamu hadapi setiap hari. Tapi aku mau kamu tahu satu hal: Kamu nggak harus pura-pura kuat di depanku. Kamu sudah lebih dari cukup, dan aku sangat menghargai caramu mencintaiku. Terima kasih sudah menjadikanku sandaranmu. Aku akan tetap di sini, menunggumu dengan sabar sampai semua tembok itu runtuh. I love you, always."
+            </div>
+            <p style="margin-top: 25px; font-family: 'Sacramento', cursive; font-size: 2.5rem; text-align: center; color: #ff4d6d;">- Evan</p>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi Hujan Hati & Bintang
+        function createParticle() {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const types = ['❤️', '✨', '💖', '⭐'];
+            p.innerHTML = types[Math.floor(Math.random() * types.length)];
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.fontSize = Math.random() * 20 + 10 + 'px';
+            p.style.animationDuration = Math.random() * 3 + 5 + 's';
+            p.style.opacity = Math.random();
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 8000);
+        }
+
+        async function startExperience() {
+            const music = document.getElementById('bgMusic');
+            music.play();
+            
+            document.getElementById('overlay').style.opacity = '0';
+            setTimeout(() => document.getElementById('overlay').style.display = 'none', 2000);
+            
+            setInterval(createParticle, 300);
+
+            const narrBox = document.getElementById('narration');
+            narrBox.style.display = 'block';
+
+            const lines = [
+                "Untuk Gina, Juniyer-ku...",
+                "Kadang dunia terasa terlalu bising untukmu.",
+                "Ada banyak beban yang mungkin sulit diceritakan.",
+                "Tapi aku ingin kamu tahu...",
+                "Kamu tidak perlu menjadi sempurna untukku.",
+                "Cukup jadi kamu, dan itu sudah lebih dari indah."
+            ];
+
+            for(let text of lines) {
+                narrBox.innerHTML = text;
+                narrBox.style.opacity = '1';
+                narrBox.style.transition = '2s';
+                await new Promise(r => setTimeout(r, 4500));
+                narrBox.style.opacity = '0';
+                await new Promise(r => setTimeout(r, 1000));
+            }
+
+            narrBox.style.display = 'none';
+            document.getElementById('stage').style.display = 'block';
+            playPhotos(1);
+        }
+
+        function playPhotos(n) {
+            if(n <= 3) {
+                const current = document.getElementById('p' + n);
+                current.style.display = 'block';
+                setTimeout(() => {
+                    current.style.display = 'none';
+                    playPhotos(n + 1);
+                }, 8500);
+            } else {
+                document.getElementById('final-letter').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
